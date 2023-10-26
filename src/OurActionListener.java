@@ -20,7 +20,9 @@ public class OurActionListener implements ActionListener {
     private JButton fourteenB;
     private JButton fifteenB;
 
-    public OurActionListener(JButton oneB){
+    public OurActionListener(JButton oneB, JButton twoB, JButton threeB, JButton fourB, JButton fiveB, JButton sixB
+    , JButton sevenB, JButton eightB, JButton nineB, JButton tenB, JButton elevenB, JButton twelveB, JButton thirteenB,
+                             JButton fourteenB, JButton fifteenB){
         this.oneB = oneB;
         this.twoB = twoB;
         this.threeB = threeB;
