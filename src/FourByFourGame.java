@@ -22,7 +22,7 @@ public class FourByFourGame extends JFrame {
     JButton thirteenB = new JButton("13");
     JButton fourteenB  = new JButton("14");
     JButton fifteenB = new JButton("15");
-    JPanel emptySlot = new JPanel(" ");
+    JPanel emptySlot = new JPanel();
 
 
 public void game(){
@@ -50,7 +50,8 @@ public void game(){
 
 
 
-    OurActionListener listener = new OurActionListener(oneB);
+    OurActionListener listener = new OurActionListener(oneB, twoB, threeB, fourB, fiveB, sixB, sevenB, eightB, nineB,
+            tenB, elevenB, twelveB, thirteenB, fourteenB, fifteenB, emptySlot);
     oneB.addActionListener(listener);
 
     setVisible(true);
