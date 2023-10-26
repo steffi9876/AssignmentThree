@@ -19,8 +19,11 @@ public class OurActionListener implements ActionListener {
     private JButton thirteenB;
     private JButton fourteenB;
     private JButton fifteenB;
+    private JPanel emptySlot;
 
-    public OurActionListener(JButton oneB){
+    public OurActionListener(JButton oneB, JButton twoB, JButton threeB, JButton fourB,JButton fiveB, JButton sixB,
+                             JButton sevenB, JButton eightB, JButton nineB, JButton tenB, JButton elevenB,
+                             JButton twelveB, JButton thirteenB, JButton fourteenB, JButton fifteenB, JPanel emptySlot){
         this.oneB = oneB;
         this.twoB = twoB;
         this.threeB = threeB;
@@ -36,6 +39,7 @@ public class OurActionListener implements ActionListener {
         this.thirteenB = thirteenB;
         this.fourteenB = fourteenB;
         this.fifteenB = fifteenB;
+        this.emptySlot = emptySlot;
 
     }
 

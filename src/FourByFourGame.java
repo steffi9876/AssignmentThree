@@ -22,7 +22,7 @@ public class FourByFourGame extends JFrame {
     JButton thirteenB = new JButton("13");
     JButton fourteenB  = new JButton("14");
     JButton fifteenB = new JButton("15");
-    JPanel emptySlot = new JPanel();
+    JPanel emptySlot = new JPanel(" ");
 
 
 public void game(){
