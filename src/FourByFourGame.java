@@ -50,8 +50,10 @@ public void game(){
 
 
 
-    OurActionListener listener = new OurActionListener(oneB);
+    OurActionListener listener = new OurActionListener(oneB, twoB, threeB, fourB, fiveB, sixB, sevenB, eightB, nineB,
+            tenB, elevenB, twelveB, thirteenB, fourteenB, fifteenB);
     oneB.addActionListener(listener);
+    twoB.addActionListener(listener);
 
     setVisible(true);
     setLocationRelativeTo(null);
