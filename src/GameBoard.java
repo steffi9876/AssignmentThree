@@ -3,8 +3,10 @@ import java.awt.*;
 
 public class GameBoard extends JFrame { //alternativt namn GameBoard
 
+    GameLogic gameLogic = new GameLogic();
+
     JPanel mainPanel = new JPanel();
-    JButton[] tiles = new JButton[15];
+    JButton[][] tiles = new JButton[4][4];
     JPanel emptySlot = new JPanel();
 
 
@@ -12,17 +14,13 @@ public class GameBoard extends JFrame { //alternativt namn GameBoard
 
         add(mainPanel);
         mainPanel.setLayout(new GridLayout(4, 4));
-
-        for (int i = 0; i < 15; i++) {
-            tiles[i] = new JButton(String.valueOf(i + 1));
-            mainPanel.add(tiles[i]);
-        }
-
         mainPanel.add(emptySlot);
 
-        OurActionListener listener = new OurActionListener(tiles, emptySlot);//ändrat här
-        for (JButton button : tiles) {
-            button.addActionListener(listener);
+        OurActionListener listener = new OurActionListener(tiles, emptySlot);//anpassat loopen till en 2-dim. array
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                tiles[i][j].addActionListener(listener);
+            }
         }
 
         setVisible(true);
@@ -31,6 +29,23 @@ public class GameBoard extends JFrame { //alternativt namn GameBoard
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
     }
+
+    public void setUpBoard(){
+        int tileNumber = 1;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if(i == gameLogic.getEmptySlotRow() && j == gameLogic.getEmptySlotColumn()){
+                    mainPanel.add(emptySlot);
+                }
+                else {
+                    tiles[i][j] = new JButton(String.valueOf(String.valueOf(tileNumber)));
+                    mainPanel.add(tiles[i][j]);
+                    tileNumber ++;
+                }
+            }
+        }
+    }
+
 
 
     public static void main(String[] args) {

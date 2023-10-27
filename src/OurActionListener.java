@@ -4,18 +4,18 @@ import java.awt.event.ActionListener;
 
 public class OurActionListener implements ActionListener {
 
-    private JButton[] buttons;
+    private JButton[][] tile;
     private JPanel emptySlot;
 
-    public OurActionListener(JButton[] buttons, JPanel emptySlot){
-        this.buttons = buttons;
+    public OurActionListener(JButton[][] tile, JPanel emptySlot){
+        this.tile = tile;
         this.emptySlot = emptySlot;
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) { //ändrat nedan
-        if(e.getSource() == buttons){
+        if(e.getSource() == tile){
            //Booleansk variabel som kollar om knappen kan flyttas, dvs om emptySlot finns över, under,
            // eller vid sidan av knappen
             //EV en toggler här?
