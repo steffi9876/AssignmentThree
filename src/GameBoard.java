@@ -1,11 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class GameBoard extends JFrame { //alternativt namn GameBoard
 
     JPanel mainPanel = new JPanel();
     JButton[] tiles = new JButton[15];
     JPanel emptySlot = new JPanel();
+    //GameLogic gameLogic; // en instans av gamelogic
+    //OurActionListener actionListener; // en instans av OurActionListener
 
 
     public void game() {
@@ -20,7 +23,9 @@ public class GameBoard extends JFrame { //alternativt namn GameBoard
 
         mainPanel.add(emptySlot);
 
-        OurActionListener listener = new OurActionListener(tiles, emptySlot);//ändrat här
+        //gameLogic = new GameLogic(tiles);
+
+        ActionListener listener = new OurActionListener(tiles, emptySlot); // lägga till gamelogic??
         for (JButton button : tiles) {
             button.addActionListener(listener);
         }
