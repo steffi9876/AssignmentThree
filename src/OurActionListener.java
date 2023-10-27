@@ -17,8 +17,12 @@ public class OurActionListener implements ActionListener {
     public void actionPerformed(ActionEvent e) { //ändrat nedan
         if(e.getSource() == buttons){
            //Booleansk variabel som kollar om knappen kan flyttas, dvs om emptySlot finns över, under,
-           // eller vid sidan av knappen
-            //EV en toggler här?
+           // eller vid sidan av knappen, en metod?
+            //EV en toggle här?
+
+           // När en knapp som kan flyttas klickas på, kan man byta plats på knappen och emptySlot.
+            // Detta kan göras genom att ta bort båda komponenterna från mainPanel och sedan lägga
+            // till dem igen på sina nya platser.
         }
     }
 }
