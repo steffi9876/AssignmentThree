@@ -16,7 +16,7 @@ public class GameBoard extends JFrame { //alternativt namn GameBoard
         mainPanel.setLayout(new GridLayout(4, 4));
         mainPanel.add(emptySlot);
 
-        OurActionListener listener = new OurActionListener(tiles, emptySlot);//anpassat loopen till en 2-dim. array
+        OurActionListener listener = new OurActionListener(tiles, emptySlot);//anpassat loopen till en 2-dim.  array
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 tiles[i][j].addActionListener(listener);
