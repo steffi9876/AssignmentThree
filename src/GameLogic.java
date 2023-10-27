@@ -4,6 +4,7 @@ public class GameLogic {
 
     private int emptySlotRow = 3;
     private int emptySlotColumn = 3;
+    private JButton[][] tiles; // En referens till vår tiles array, används i metoden swapTileWithEmptySlot
 
 
     public int getEmptySlotRow() {
@@ -14,12 +15,9 @@ public class GameLogic {
         return emptySlotColumn;
     }
 
-    private JButton[][] tiles; // En referens till vår tiles array, används i metoden swapTileWithEmptySlot
-
-
-
-
-
+    public void setTiles(JButton[][] tiles) {
+        this.tiles = tiles;
+    }
 
     public boolean isTileMoveable(int x, int y){
 
@@ -49,9 +47,6 @@ public class GameLogic {
             emptySlotRow = clickedRow;
             emptySlotColumn = clickedCol;
         }
-
-
-
     }
 
     public void shuffleTiles(){
