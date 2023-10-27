@@ -1,7 +1,7 @@
 public class GameLogic {
 
     private int emptySlotRow = 3;
-    private int getEmptySlotColumn = 3;
+    private int emptySlotColumn = 3;
 
     public void setUpBoard(/*Button[] tiles, JPanel mainPanel, JPanel emptySlot*/) {
 
@@ -21,9 +21,24 @@ public class GameLogic {
     }
 
 
-   // public boolean isTileMoveable(int x, int y){
+    public boolean isTileMoveable(int x, int y){
 
-   // }
+        if(x == emptySlotRow - 1 && y == emptySlotColumn){
+            return true;
+        }
+        else if (x == emptySlotRow + 1 && y == emptySlotColumn){
+            return true;
+        }
+        else if (x == emptySlotRow && y == emptySlotColumn - 1){
+            return true;
+        }
+        else if (x == emptySlotRow && y == emptySlotColumn + 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     public void swapTileWithEmptySlot(){
 
