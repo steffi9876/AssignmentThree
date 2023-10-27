@@ -3,7 +3,6 @@ import java.awt.*;
 
 public class GameBoard extends JFrame { //alternativt namn GameBoard
 
-    GameLogic gameLogic = new GameLogic();
 
     JPanel mainPanel = new JPanel();
     JButton[][] tiles = new JButton[4][4];
@@ -12,9 +11,14 @@ public class GameBoard extends JFrame { //alternativt namn GameBoard
 
     public void game() {
 
+        GameLogic gameLogic = new GameLogic();
+
         add(mainPanel);
         mainPanel.setLayout(new GridLayout(4, 4));
-        mainPanel.add(emptySlot);
+
+
+        setUpBoard();
+        gameLogic.setTiles(tiles);
 
         OurActionListener listener = new OurActionListener(tiles, emptySlot);//anpassat loopen till en 2-dim.  array
         for (int i = 0; i < 4; i++) {
