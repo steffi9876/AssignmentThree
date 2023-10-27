@@ -1,17 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class GameBoard extends JFrame { //alternativt namn GameBoard
+public class GameBoard extends JFrame { 
 
-
+    GameLogic gameLogic = new GameLogic();
     JPanel mainPanel = new JPanel();
     JButton[][] tiles = new JButton[4][4];
     JPanel emptySlot = new JPanel();
 
 
     public void game() {
-
-        GameLogic gameLogic = new GameLogic();
 
         add(mainPanel);
         mainPanel.setLayout(new GridLayout(4, 4));
