@@ -1,8 +1,10 @@
+import javax.swing.*;
+
 public class GameLogic {
 
     private int emptySlotRow = 3;
     private int emptySlotColumn = 3;
-
+    private JButton[][] tiles; // En referens till vår tiles array, används i metoden swapTileWithEmptySlot
     public void setUpBoard(/*Button[] tiles, JPanel mainPanel, JPanel emptySlot*/) {
 
       /*  int number = 1;
@@ -40,7 +42,17 @@ public class GameLogic {
         }
     }
 
-    public void swapTileWithEmptySlot(){
+    public void swapTileWithEmptySlot(int clickedRow, int clickedCol){
+        if (isTileMoveable(clickedRow, clickedCol)){
+            String clicked = tiles[clickedRow][clickedCol].getText();
+            tiles[emptySlotRow][emptySlotColumn].setText(clicked);
+            tiles[clickedRow][clickedCol].setText("");
+
+            emptySlotRow = clickedRow;
+            emptySlotColumn = clickedCol;
+        }
+
+
 
     }
 
