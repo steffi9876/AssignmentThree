@@ -1,10 +1,17 @@
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class GameLogic {
 
     private int emptySlotRow = 3;
     private int emptySlotColumn = 3;
     private JButton[][] tiles; // En referens till vår tiles array, används i metoden swapTileWithEmptySlot
+
+    public GameLogic(JButton[] tiles) { //Ta bort???
+    }
+
     public void setUpBoard(/*Button[] tiles, JPanel mainPanel, JPanel emptySlot*/) {
 
       /*  int number = 1;
@@ -52,12 +59,28 @@ public class GameLogic {
             emptySlotColumn = clickedCol;
         }
 
-
-
     }
 
     public void shuffleTiles(){
+        List<Integer> tileValues = new ArrayList<>();
 
+        for (int i = 0; i <=15 ; i++) {
+            tileValues.add(i);
+        }
+        Collections.shuffle(tileValues);
+
+        int index = 0;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                int tileValue = tileValues.get(index);
+                if (tileValue == 15) {
+                    tiles[i][j].setText("");
+                } else {
+                    tiles[i][j].setText(Integer.toString(tileValue));
+                }
+                index++;
+            }
+        }
     }
 
 
