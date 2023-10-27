@@ -49,6 +49,23 @@ public class GameLogic {
         }
     }
 
+    //en array med två platser där koordinaten för raden returneras i index 0 och
+    // koordinaten för kolumnen returneras i index 1 returneras
+    public int[] getTilePosition(JButton clickedTile){
+        for (int i = 0; i < tiles[i].length; i++){
+            for (int j = 0; j < tiles.length; j++){
+                if (tiles[i][j] == clickedTile){
+                    return new int[]{i,j};
+                }
+            }
+        }
+        return null;
+    }
+
+    public void updateBoard(){
+
+    }
+
     public void shuffleTiles(){
 
     }
