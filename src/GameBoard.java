@@ -23,6 +23,7 @@ public class GameBoard extends JFrame {
             }
         }
 
+
         setVisible(true);
         setLocationRelativeTo(null);
         setSize(400, 400);
