@@ -83,6 +83,22 @@ public class GameLogic {
         }
     }
 
+    public static int[] generateRandomNumbers(){ // En metod som genererar random nummer till oss när ett nytt spel startar
+        int[] numbers = new int[15];
+        for (int i = 0; i < 15; i++) {
+            numbers[i] = i + 1;
+        }
+        for (int i = 0; i < numbers.length -1; i++) {
+            int j = i + (int) (Math.random() * (numbers.length) -i);
+            int temp = numbers[i];
+            numbers[i] = numbers[j];
+            numbers[j] = temp;
+        }
+        return numbers;
+    }
+
+    private void startNewGame(){ // En metod för att kunna trycka på nytt spel
+    }
 
 
 
