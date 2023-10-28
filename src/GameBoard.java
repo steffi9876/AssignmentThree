@@ -7,27 +7,28 @@ public class GameBoard extends JFrame { //alternativt namn GameBoard
     JPanel mainPanel = new JPanel();
     JButton[] tiles = new JButton[15];
     JPanel emptySlot = new JPanel();
-    //GameLogic gameLogic; // en instans av gamelogic
-    //OurActionListener actionListener; // en instans av OurActionListener
-
+    JButton newGame = new JButton("Nytt spel"); // Vi behöver en knapp genererar nytt spel, jag har ej lagt till den än
 
     public void game() {
 
         add(mainPanel);
         mainPanel.setLayout(new GridLayout(4, 4));
 
+        int[] numbers = GameLogic.generateRandomNumbers(); // Denna får knapparna random placerade
+
         for (int i = 0; i < 15; i++) {
-            tiles[i] = new JButton(String.valueOf(i + 1));
+            tiles[i] = new JButton(String.valueOf(numbers[i])); // Denna får knapparna random placerade
+            //tiles[i] = new JButton(String.valueOf(i + 1)); // Gammal, men vill ej ta bort!
             mainPanel.add(tiles[i]);
         }
 
         mainPanel.add(emptySlot);
 
-        //gameLogic = new GameLogic(tiles);
 
-        ActionListener listener = new OurActionListener(tiles, emptySlot); // lägga till gamelogic??
+        ActionListener listener = new OurActionListener(tiles, emptySlot); //
         for (JButton button : tiles) {
             button.addActionListener(listener);
+
         }
 
         setVisible(true);
