@@ -9,9 +9,7 @@ public class GameLogic {
     private int emptySlotColumn = 3;
     private JButton[][] tiles; // En referens till vår tiles array, används i metoden swapTileWithEmptySlot
 
-    public GameLogic(JButton[] tiles) { //Ta bort???
-    }
-
+    
     public void setUpBoard(/*Button[] tiles, JPanel mainPanel, JPanel emptySlot*/) {
 
       /*  int number = 1;
@@ -30,18 +28,18 @@ public class GameLogic {
     }
 
 
-    public boolean isTileMoveable(int x, int y){
+    public boolean isTileMoveable(int row, int col){ // Bytte ut namnen till row och col för enkelhetens skull
 
-        if(x == emptySlotRow - 1 && y == emptySlotColumn){
+        if(row == emptySlotRow - 1 && col == emptySlotColumn){
             return true;
         }
-        else if (x == emptySlotRow + 1 && y == emptySlotColumn){
+        else if (row == emptySlotRow + 1 && col == emptySlotColumn){
             return true;
         }
-        else if (x == emptySlotRow && y == emptySlotColumn - 1){
+        else if (row == emptySlotRow && col == emptySlotColumn - 1){
             return true;
         }
-        else if (x == emptySlotRow && y == emptySlotColumn + 1) {
+        else if (row == emptySlotRow && col == emptySlotColumn + 1) {
             return true;
         }
         else {
@@ -49,14 +47,14 @@ public class GameLogic {
         }
     }
 
-    public void swapTileWithEmptySlot(int clickedRow, int clickedCol){
-        if (isTileMoveable(clickedRow, clickedCol)){
-            String clicked = tiles[clickedRow][clickedCol].getText();
+    public void swapTileWithEmptySlot(int row, int col){
+        if (isTileMoveable(row, col)){ // Ta bort if sats?????
+            String clicked = tiles[row][col].getText();
             tiles[emptySlotRow][emptySlotColumn].setText(clicked);
-            tiles[clickedRow][clickedCol].setText("");
+            tiles[row][col].setText("");
 
-            emptySlotRow = clickedRow;
-            emptySlotColumn = clickedCol;
+            emptySlotRow = row;
+            emptySlotColumn = col;
         }
 
     }
@@ -81,7 +79,7 @@ public class GameLogic {
                 index++;
             }
         }
-    }
+    } // Dessa metoder gör samma sak, välj sedan mest lämpliga!
 
     public static int[] generateRandomNumbers(){ // En metod som genererar random nummer till oss när ett nytt spel startar
         int[] numbers = new int[15];
@@ -95,10 +93,26 @@ public class GameLogic {
             numbers[j] = temp;
         }
         return numbers;
-    }
+    } // Dessa metoder gör samma sak, väl sedan mest lämpliga!
 
     private void startNewGame(){ // En metod för att kunna trycka på nytt spel
     }
+
+    private boolean isPuzzleSolved(){
+        int expectedValue = 1;
+        for (int i = 0; i < 4; i++) { //row?
+            for (int j = 0; j < 4; j++) { //col?
+                if (!tiles[i][j].getText().equals("")){
+                    int tileValue = Integer.parseInt(tiles[i][j].getText());
+                    if (tileValue != expectedValue){
+                        return false;
+                    }
+                    expectedValue++;
+                }
+            }
+
+        } return true;
+    } // Metod för att kunna som om spelet är löst!
 
 
 
