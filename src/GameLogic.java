@@ -98,6 +98,20 @@ public class GameLogic {
     }
 
     private void startNewGame(){ // En metod för att kunna trycka på nytt spel
+        int[] numbers = generateRandomNumbers();
+        int index = 0;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (index < 15){
+                    tiles[i][j].setText(String.valueOf(numbers[index]));
+                    index++;
+                } else {
+                    tiles[i][j].setText("");
+                    emptySlotRow = i;
+                    emptySlotColumn = j;
+                }
+            }
+        }
     }
 
 
