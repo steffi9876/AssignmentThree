@@ -4,13 +4,14 @@ import java.awt.event.ActionListener;
 
 public class OurActionListener implements ActionListener {
 
-    private JButton[] buttons;
-    private JPanel emptySlot;
+    //private JButton[] buttons;
+    JButton[][] tiles;
+    //private JPanel emptySlot;
     //private GameLogic gameLogic; // en referens till gamelogic klassen
 
-    public OurActionListener(JButton[] buttons, JPanel emptySlot){ // Lägga till gamelogic här?
-        this.buttons = buttons;
-        this.emptySlot = emptySlot;
+    public OurActionListener(JButton[][] tiles){ // Lägga till gamelogic här?
+        this.tiles = tiles;
+        //this.emptySlot = emptySlot;
         //this.gameLogic = gameLogic;
 
     }
