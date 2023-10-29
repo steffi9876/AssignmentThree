@@ -4,9 +4,9 @@ import java.awt.event.ActionListener;
 
 public class GameBoard extends JFrame { //alternativt namn GameBoard
 
-    JPanel mainPanel = new JPanel();
-    JButton[] tiles = new JButton[15];
-    JPanel emptySlot = new JPanel();
+    JPanel mainPanel;
+    JButton[][] tiles; // En tvådimensionell array för våra brickor
+    private int emptyRow, emptyCol;
     JButton newGame = new JButton("Nytt spel"); // Vi behöver en knapp genererar nytt spel, jag har ej lagt till den än
 
     public void game() {
@@ -16,7 +16,7 @@ public class GameBoard extends JFrame { //alternativt namn GameBoard
 
         int[] numbers = GameLogic.generateRandomNumbers(); // Denna får knapparna random placerade
 
-        for (int i = 0; i < 15; i++) {
+/*        for (int i = 0; i < 15; i++) {
             tiles[i] = new JButton(String.valueOf(numbers[i])); // Denna får knapparna random placerade
             //tiles[i] = new JButton(String.valueOf(i + 1)); // Gammal, men vill ej ta bort!
             mainPanel.add(tiles[i]);
@@ -29,7 +29,7 @@ public class GameBoard extends JFrame { //alternativt namn GameBoard
         for (JButton button : tiles) {
             button.addActionListener(listener);
 
-        }
+        }*/
 
         setVisible(true);
         setLocationRelativeTo(null);
