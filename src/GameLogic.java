@@ -13,36 +13,23 @@ public class GameLogic {
     public GameLogic(JButton[] tiles) { //Ta bort???
     }
 
-    public void setUpBoard(/*Button[] tiles, JPanel mainPanel, JPanel emptySlot*/) {
+    public void setUpBoard() {
 
-      /*  int number = 1;
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                if (i == 3 && j == 3) {
-                    mainPanel.add(emptySlot);
-                } else {
-                    JButton tile = new JButton(String.valueOf(number++));
-                    tile.setActionCommand(i + "," + j);
-                    tiles[number - 2] = tile;
-                    mainPanel.add(tile);
-                }
-            }
-        }*/
     }
 
 
-    public boolean isTileMoveable(int x, int y){
+    public boolean isTileMoveable(int row, int col){ // ändrade namn till row och col
 
-        if(x == emptySlotRow - 1 && y == emptySlotColumn){
+        if(row == emptySlotRow - 1 && col == emptySlotColumn){
             return true;
         }
-        else if (x == emptySlotRow + 1 && y == emptySlotColumn){
+        else if (row == emptySlotRow + 1 && col == emptySlotColumn){
             return true;
         }
-        else if (x == emptySlotRow && y == emptySlotColumn - 1){
+        else if (row == emptySlotRow && col == emptySlotColumn - 1){
             return true;
         }
-        else if (x == emptySlotRow && y == emptySlotColumn + 1) {
+        else if (row == emptySlotRow && col == emptySlotColumn + 1) {
             return true;
         }
         else {
@@ -82,7 +69,7 @@ public class GameLogic {
                 index++;
             }
         }
-    }
+    } // Ta bort??????
 
     public static int[] generateRandomNumbers(){ // En metod som genererar random nummer till oss när ett nytt spel startar
         int[] numbers = new int[15];
@@ -113,6 +100,23 @@ public class GameLogic {
                 }
             }
         }
+    }
+
+    private boolean isGameSolved(){ // Metod för att se om spelet är löst
+        int expectedValue = 1;
+        for (int row = 0; row < 4; row++) {
+            for (int col = 0; col < 4; col++) {
+                if (!tiles[row][col].getText().equals("")){
+                    int tileValue = Integer.parseInt(tiles[row][col].getText());
+                    if (tileValue != expectedValue){
+                        return false;
+                    }
+                    expectedValue++;
+                }
+
+            }
+        }
+        return true;
     }
 
 
