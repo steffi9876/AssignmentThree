@@ -1,4 +1,7 @@
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,12 +12,37 @@ public class GameLogic {
     private int emptySlotColumn = 3;
     // tvådimensionell array
     private JButton[][] tiles; // En referens till vår tiles array, används i metoden swapTileWithEmptySlot
+    JPanel mainPanel = new JPanel();
 
     public GameLogic(JButton[] tiles) { //Ta bort???
     }
 
     public void setUpBoard() {
+        int[] numbers = generateRandomNumbers();
+        int index = 0;
 
+        for (int row = 0; row < 4; row++) {
+            for (int col = 0; col < 4; col++) {
+                if (index < 15) {
+                    tiles[row][col] = new JButton(String.valueOf(numbers[index]));
+                    index++;
+                } else {
+                    tiles[row][col] = new JButton("");
+                    emptySlotRow = row;
+                    emptySlotColumn = col;
+                }
+                tiles[row][col].setFont(new Font("Arial", Font.PLAIN, 20));
+                tiles[row][col].setFocusPainted(false);
+                tiles[row][col].addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        // Fyll i här
+                    }
+                });
+                mainPanel.add(tiles[row][col]);
+            }
+
+        }
     }
 
 
