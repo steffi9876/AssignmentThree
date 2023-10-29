@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 public class GameBoard extends JFrame { //alternativt namn GameBoard
 
     JPanel mainPanel = new JPanel();
-    JButton[] tiles = new JButton[15];
+    JButton[] tiles = new JButton[15]; // Ändra till [][]
     JPanel emptySlot = new JPanel();
     JButton newGame = new JButton("Nytt spel"); // Vi behöver en knapp genererar nytt spel, jag har ej lagt till den än
 
