@@ -17,6 +17,7 @@ public class GameBoard extends JFrame {
 
         setUpBoard();
         gameLogic.setTiles(tiles);
+        mainPanel.revalidate();
 
         OurActionListener listener = new OurActionListener(tiles, gameLogic);//anpassat loopen till en 2-dim.  array
         for (int i = 0; i < 4; i++) {

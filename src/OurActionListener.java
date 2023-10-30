@@ -25,7 +25,7 @@ public class OurActionListener implements ActionListener {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 if (this.tile[i][j] == tile){
-                    clickedRow =1;
+                    clickedRow = i;
                     clickedColumn = j;
                     break;
                 }
