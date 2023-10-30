@@ -44,16 +44,21 @@ public class GameLogic {
         }
     }
 
-    public void swapTileWithEmptySlot(int clickedRow, int clickedCol){
-        if (isTileMoveable(clickedRow, clickedCol)){
-            String clicked = tiles[clickedRow][clickedCol].getText();
+    public void swapTileWithEmptySlot(int clickedRow, int clickedColumn){
+
+        if (isTileMoveable(clickedRow, clickedColumn)){
+
+            String clicked = tiles[clickedRow][clickedColumn].getText();
             tiles[emptySlotRow][emptySlotColumn].setText(clicked);
-            tiles[clickedRow][clickedCol].setText("");
+            tiles[clickedRow][clickedColumn].setText("");
+
+            emptySlotRow = clickedRow;
+            emptySlotColumn = clickedColumn;
         }
     }
   
   
-    public static int[] generateRandomNumbers(){ // En metod som genererar random nummer till oss när ett nytt spel startar
+    public int[] generateRandomNumbers(){ // En metod som genererar random nummer till oss när ett nytt spel startar
         int[] numbers = new int[15];
         for (int i = 0; i < 15; i++) {
             numbers[i] = i + 1;
