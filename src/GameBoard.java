@@ -3,7 +3,7 @@ import java.awt.*;
 
 
 public class GameBoard extends JFrame {
-=
+
 
     GameLogic gameLogic = new GameLogic();
     JPanel mainPanel = new JPanel();
