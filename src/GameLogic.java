@@ -83,6 +83,22 @@ public class GameLogic {
             }
         }
     }
+    private boolean isGameSolved(){ // Metod för att se om spelet är löst
+        int expectedValue = 1;
+        for (int row = 0; row < 4; row++) {
+            for (int col = 0; col < 4; col++) {
+                if (!tiles[row][col].getText().equals("")){
+                    int tileValue = Integer.parseInt(tiles[row][col].getText());
+                    if (tileValue != expectedValue){
+                        return false;
+                    }
+                    expectedValue++;
+                }
+
+            }
+        }
+        return true;
+    }
 }
 
 
