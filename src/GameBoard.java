@@ -18,12 +18,14 @@ public class GameBoard extends JFrame {
         setUpBoard();
         gameLogic.setTiles(tiles);
 
-        OurActionListener listener = new OurActionListener(tiles);//anpassat loopen till en 2-dim.  array
+        OurActionListener listener = new OurActionListener(tiles, gameLogic);//anpassat loopen till en 2-dim.  array
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 tiles[i][j].addActionListener(listener);
             }
         }
+
+        gameLogic.startNewGame();
 
         setVisible(true);
         setLocationRelativeTo(null);
