@@ -67,7 +67,7 @@ public class GameLogic {
         return numbers;
 
     }
-    private void startNewGame(){ // En metod för att kunna trycka på nytt spel
+    public void startNewGame(){ // En metod för att kunna trycka på nytt spel
         int[] numbers = generateRandomNumbers();
         int index = 0;
         for (int row = 0; row < 4; row++) {
@@ -83,7 +83,7 @@ public class GameLogic {
             }
         }
     }
-    private boolean isGameSolved(){ // Metod för att se om spelet är löst
+    public boolean isGameSolved(){ // Metod för att se om spelet är löst
         int expectedValue = 1;
         for (int row = 0; row < 4; row++) {
             for (int col = 0; col < 4; col++) {
