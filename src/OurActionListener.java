@@ -7,7 +7,7 @@ public class OurActionListener implements ActionListener {
     private JButton[][] tile;
     private JPanel emptySlot;
 
-    public OurActionListener(JButton[][] tile, JPanel emptySlot){
+    public OurActionListener(JButton[][] tile){
         this.tile = tile;
         this.emptySlot = emptySlot;
 

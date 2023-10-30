@@ -1,22 +1,24 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class GameBoard extends JFrame { //alternativt namn GameBoard.
+
+public class GameBoard extends JFrame {
+=
 
     GameLogic gameLogic = new GameLogic();
-
     JPanel mainPanel = new JPanel();
     JButton[][] tiles = new JButton[4][4];
-    JPanel emptySlot = new JPanel();
 
 
     public void game() {
 
         add(mainPanel);
         mainPanel.setLayout(new GridLayout(4, 4));
-        mainPanel.add(emptySlot);
 
-        OurActionListener listener = new OurActionListener(tiles, emptySlot);//anpassat loopen till en 2-dim.  array
+        setUpBoard();
+        gameLogic.setTiles(tiles);
+
+        OurActionListener listener = new OurActionListener(tiles);//anpassat loopen till en 2-dim.  array
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 tiles[i][j].addActionListener(listener);
@@ -35,7 +37,8 @@ public class GameBoard extends JFrame { //alternativt namn GameBoard.
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 if(i == gameLogic.getEmptySlotRow() && j == gameLogic.getEmptySlotColumn()){
-                    mainPanel.add(emptySlot);
+                    tiles[i][j] = new JButton("");
+                    mainPanel.add(tiles[i][j]);
                 }
                 else {
                     tiles[i][j] = new JButton(String.valueOf(String.valueOf(tileNumber)));
