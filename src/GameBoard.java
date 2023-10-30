@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class GameBoard extends JFrame { //alternativt namn GameBoard
+public class GameBoard extends JFrame { //alternativt namn GameBoard.
 
     GameLogic gameLogic = new GameLogic();
 
