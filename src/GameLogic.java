@@ -67,6 +67,22 @@ public class GameLogic {
         return numbers;
 
     }
+    private void startNewGame(){ // En metod för att kunna trycka på nytt spel
+        int[] numbers = generateRandomNumbers();
+        int index = 0;
+        for (int row = 0; row < 4; row++) {
+            for (int column = 0; column < 4; column++) {
+                if (index < 15){
+                    tiles[row][column].setText(String.valueOf(numbers[index]));
+                    index++;
+                } else {
+                    tiles[row][column].setText("");
+                    emptySlotRow = row;
+                    emptySlotColumn = column;
+                }
+            }
+        }
+    }
 }
 
 
