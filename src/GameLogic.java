@@ -25,28 +25,24 @@ public class GameLogic {
         this.tiles = tiles;
     }
 
-    public boolean isTileMoveable(int x, int y){
+    public boolean isTileMoveable(int x, int y) {
 
-        if(x == emptySlotRow - 1 && y == emptySlotColumn){
+        if (x == emptySlotRow - 1 && y == emptySlotColumn) {
             return true;
-        }
-        else if (x == emptySlotRow + 1 && y == emptySlotColumn){
+        } else if (x == emptySlotRow + 1 && y == emptySlotColumn) {
             return true;
-        }
-        else if (x == emptySlotRow && y == emptySlotColumn - 1){
+        } else if (x == emptySlotRow && y == emptySlotColumn - 1) {
             return true;
-        }
-        else if (x == emptySlotRow && y == emptySlotColumn + 1) {
+        } else if (x == emptySlotRow && y == emptySlotColumn + 1) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
 
-    public void swapTileWithEmptySlot(int clickedRow, int clickedColumn){
+    public void swapTileWithEmptySlot(int clickedRow, int clickedColumn) {
 
-        if (isTileMoveable(clickedRow, clickedColumn)){
+        if (isTileMoveable(clickedRow, clickedColumn)) {
 
             String clicked = tiles[clickedRow][clickedColumn].getText();
             tiles[emptySlotRow][emptySlotColumn].setText(clicked);
@@ -56,15 +52,15 @@ public class GameLogic {
             emptySlotColumn = clickedColumn;
         }
     }
-  
-  
-    public int[] generateRandomNumbers(){ // En metod som genererar random nummer till oss när ett nytt spel startar
+
+
+    public int[] generateRandomNumbers() { // En metod som genererar random nummer till oss när ett nytt spel startar
         int[] numbers = new int[15];
         for (int i = 0; i < 15; i++) {
             numbers[i] = i + 1;
         }
-        for (int i = 0; i < numbers.length -1; i++) {
-            int j = i + (int) (Math.random() * (numbers.length) -i);
+        for (int i = 0; i < numbers.length - 1; i++) {
+            int j = i + (int) (Math.random() * (numbers.length) - i);
             int temp = numbers[i];
             numbers[i] = numbers[j];
             numbers[j] = temp;
@@ -72,12 +68,13 @@ public class GameLogic {
         return numbers;
 
     }
-    public void startNewGame(){ // En metod för att kunna trycka på nytt spel
+
+    public void startNewGame() { // En metod för att kunna trycka på nytt spel
         int[] numbers = generateRandomNumbers();
         int index = 0;
         for (int row = 0; row < 4; row++) {
             for (int column = 0; column < 4; column++) {
-                if (index < 15){
+                if (index < 15) {
                     tiles[row][column].setText(String.valueOf(numbers[index]));
                     index++;
                 } else {
@@ -88,13 +85,14 @@ public class GameLogic {
             }
         }
     }
-    public boolean isGameSolved(){ // Metod för att se om spelet är löst
+
+    public boolean isGameSolved() { // Metod för att se om spelet är löst
         int expectedValue = 1;
         for (int row = 0; row < 4; row++) {
             for (int col = 0; col < 4; col++) {
-                if (!tiles[row][col].getText().equals("")){
+                if (!tiles[row][col].getText().equals("")) {
                     int tileValue = Integer.parseInt(tiles[row][col].getText());
-                    if (tileValue != expectedValue){
+                    if (tileValue != expectedValue) {
                         return false;
                     }
                     expectedValue++;
@@ -104,6 +102,15 @@ public class GameLogic {
         }
         return true;
     }
+
+    public void EasyMode() {
+        tiles[3][2].setText("");
+        tiles[3][3].setText("15");
+        setTiles(tiles);
+    }
+
+
+
 }
 
 

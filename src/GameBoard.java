@@ -16,8 +16,19 @@ public class GameBoard extends JFrame {
 
     public void game() {
 
-        //jPanel.add(southPanel, BorderLayout.SOUTH);
+        setLayout();
 
+        OurActionListener listener = new OurActionListener(tiles, gameLogic);//anpassat loopen till en 2-dim.  array
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                tiles[i][j].addActionListener(listener);
+            }
+        }
+
+        gameLogic.startNewGame();
+    }
+
+    public void setLayout(){
         add(foundation);
         foundation.setLayout(new BorderLayout());
 
@@ -33,14 +44,6 @@ public class GameBoard extends JFrame {
         gameLogic.setTiles(tiles);
         gamePanel.revalidate();
 
-        OurActionListener listener = new OurActionListener(tiles, gameLogic);//anpassat loopen till en 2-dim.  array
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                tiles[i][j].addActionListener(listener);
-            }
-        }
-
-        gameLogic.startNewGame();
 
         setVisible(true);
         setLocationRelativeTo(null);
