@@ -6,18 +6,32 @@ public class GameBoard extends JFrame {
 
 
     GameLogic gameLogic = new GameLogic();
-    JPanel mainPanel = new JPanel();
+    JPanel foundation = new JPanel();
+    JPanel gamePanel = new JPanel();
+    JPanel choicePanel = new JPanel();
     JButton[][] tiles = new JButton[4][4];
+    JButton newGame = new JButton("New game");
+    JButton easyMode = new JButton("Easy mode");
 
 
     public void game() {
 
-        add(mainPanel);
-        mainPanel.setLayout(new GridLayout(4, 4));
+        //jPanel.add(southPanel, BorderLayout.SOUTH);
+
+        add(foundation);
+        foundation.setLayout(new BorderLayout());
+
+        foundation.add(choicePanel, BorderLayout.NORTH);
+        foundation.add(gamePanel, BorderLayout.CENTER);
+
+        gamePanel.setLayout(new GridLayout(4, 4));
+
+        choicePanel.add(newGame);
+        choicePanel.add(easyMode);
 
         setUpBoard();
         gameLogic.setTiles(tiles);
-        mainPanel.revalidate();
+        gamePanel.revalidate();
 
         OurActionListener listener = new OurActionListener(tiles, gameLogic);//anpassat loopen till en 2-dim.  array
         for (int i = 0; i < 4; i++) {
@@ -41,11 +55,11 @@ public class GameBoard extends JFrame {
             for (int j = 0; j < 4; j++) {
                 if(i == gameLogic.getEmptySlotRow() && j == gameLogic.getEmptySlotColumn()){
                     tiles[i][j] = new JButton("");
-                    mainPanel.add(tiles[i][j]);
+                    gamePanel.add(tiles[i][j]);
                 }
                 else {
                     tiles[i][j] = new JButton(String.valueOf(String.valueOf(tileNumber)));
-                    mainPanel.add(tiles[i][j]);
+                    gamePanel.add(tiles[i][j]);
                     tileNumber ++;
                 }
             }
