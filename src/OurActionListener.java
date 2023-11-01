@@ -40,7 +40,7 @@ public class OurActionListener implements ActionListener {
             gameBoard.isTileEmptySetRed();
         }
         if (gameLogic.isGameSolved()){
-            JOptionPane.showMessageDialog(null, "Grattis, du vann!");
+            gameBoard.showWinnerMessage();
         }
     }
 }

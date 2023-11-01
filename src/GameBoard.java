@@ -7,18 +7,18 @@ public class GameBoard extends JFrame {
 
     GameLogic gameLogic = new GameLogic(this);
 
-    Color darkRed = new  Color(200, 40, 40);
-    Color inkBlue = new Color(10, 60, 150);
-
-    Border border = BorderFactory.createLineBorder(darkRed, 5);
     JPanel foundation = new JPanel();
     JPanel gamePanel = new JPanel();
     JPanel choicePanel = new JPanel();
     JButton[][] tiles = new JButton[4][4];
+
     JButton newGame = new JButton("New game");
     JButton easyMode = new JButton("Easy mode");
 
-
+    Color darkRed = new  Color(200, 40, 40);
+    Color inkBlue = new Color(10, 60, 150);
+    Border border = BorderFactory.createLineBorder(darkRed, 5);
+    String message = "Grattis, du vann!";
 
 
     public void game() {
@@ -112,6 +112,12 @@ public class GameBoard extends JFrame {
                 }
             }
         }
+    }
+
+    public void showWinnerMessage(){
+        JLabel messageLabel = new JLabel(message);
+        messageLabel.setFont(new Font("Courier New", Font.BOLD, 20));
+        JOptionPane.showMessageDialog(null, messageLabel);
     }
 
 
