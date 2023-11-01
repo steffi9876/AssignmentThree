@@ -20,19 +20,11 @@ public class GameLogic {
         this.tiles = tiles;
     }
 
-    public boolean isTileMoveable(int x, int y) {
+    public boolean isTileMoveable(int row, int column) {
 
-        if (x == emptySlotRow - 1 && y == emptySlotColumn) {
-            return true;
-        } else if (x == emptySlotRow + 1 && y == emptySlotColumn) {
-            return true;
-        } else if (x == emptySlotRow && y == emptySlotColumn - 1) {
-            return true;
-        } else if (x == emptySlotRow && y == emptySlotColumn + 1) {
-            return true;
-        } else {
-            return false;
-        }
+        int rowDifference = Math.abs(emptySlotRow -row);
+        int columnDifference = Math.abs(emptySlotColumn - column);
+        return (rowDifference == 1 && columnDifference == 0 || rowDifference == 0 && columnDifference == 1);
     }
 
 
@@ -69,15 +61,15 @@ public class GameLogic {
 
         int[] numbers = generateRandomNumbers();
         int index = 0;
-        for (int row = 0; row < 4; row++) {
-            for (int column = 0; column < 4; column++) {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
                 if (index < 15) {
-                    tiles[row][column].setText(String.valueOf(numbers[index]));
+                    tiles[i][j].setText(String.valueOf(numbers[index]));
                     index++;
                 } else {
-                    tiles[row][column].setText("");
-                    emptySlotRow = row;
-                    emptySlotColumn = column;
+                    tiles[i][j].setText("");
+                    emptySlotRow = i;
+                    emptySlotColumn = j;
                 }
                 isTileEmptySetRed();
             }
@@ -105,13 +97,16 @@ public class GameLogic {
         int tileValue = 1;
         for (int row = 0; row < 4; row++) {
             for (int column = 0; column < 4; column++) {
+
                 if (row == 3 && column == 2) {
                     tiles[row][column].setText("");
                     emptySlotRow = row;
                     emptySlotColumn = column;
-                } else if (row == 3 && column == 3) {
+                }
+                else if (row == 3 && column == 3) {
                     tiles[row][column].setText("15");
-                } else {
+                }
+                else {
                     tiles[row][column].setBackground(UIManager.getColor("Button.background"));
                     tiles[row][column].setText(String.valueOf(tileValue));
                     tileValue++;
@@ -122,8 +117,10 @@ public class GameLogic {
     }
 
     public void isTileEmptySetRed() {
+
         for (int row = 0; row < 4; row++) {
             for (int col = 0; col < 4; col++) {
+
                 if (tiles[row][col].getText().equals("")) {
                     tiles[row][col].setBackground(Color.RED);
                 }
