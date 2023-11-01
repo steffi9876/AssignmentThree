@@ -5,23 +5,22 @@ import java.awt.*;
 
 public class GameBoard extends JFrame {
 
-    GameLogic gameLogic = new GameLogic(this);
+    private GameLogic gameLogic = new GameLogic(this);
+    private JPanel foundation = new JPanel();
+    private JPanel gamePanel = new JPanel();
+    private JPanel choicePanel = new JPanel();
+    private JButton[][] tiles = new JButton[4][4];
 
-    JPanel foundation = new JPanel();
-    JPanel gamePanel = new JPanel();
-    JPanel choicePanel = new JPanel();
-    JButton[][] tiles = new JButton[4][4];
+    private JButton newGame = new JButton("New game");
+    private JButton easyMode = new JButton("Easy mode");
 
-    JButton newGame = new JButton("New game");
-    JButton easyMode = new JButton("Easy mode");
-
-    Color darkRed = new  Color(200, 40, 40);
-    Color inkBlue = new Color(10, 60, 150);
-    Border border = BorderFactory.createLineBorder(darkRed, 5);
-    String message = "Grattis, du vann!";
+    private Color darkRed = new  Color(200, 40, 40);
+    private Color inkBlue = new Color(10, 60, 150);
+    private Border border = BorderFactory.createLineBorder(darkRed, 5);
+    private String message = "Grattis, du vann!";
 
 
-    public void game() {
+    private void game() {
 
         setUpPanels();
         setUpTiles();
@@ -41,7 +40,7 @@ public class GameBoard extends JFrame {
     }
 
 
-    public void setUpPanels(){
+    private void setUpPanels(){
         add(foundation);
         foundation.setLayout(new BorderLayout());
         foundation.add(choicePanel, BorderLayout.NORTH);
@@ -53,7 +52,7 @@ public class GameBoard extends JFrame {
     }
 
 
-    public void setUpTiles(){
+    private void setUpTiles(){
         choicePanel.add(newGame);
         choicePanel.add(easyMode);
 
@@ -65,7 +64,7 @@ public class GameBoard extends JFrame {
     }
 
 
-    public void setUpBoard(){
+    private void setUpBoard(){
         setUpBoardTiles();
         for (int row = 0; row < 4; row++) {
             for (int column = 0; column < 4; column++) {
@@ -80,7 +79,7 @@ public class GameBoard extends JFrame {
     }
 
 
-    public void setUpBoardTiles() {
+    private void setUpBoardTiles() {
         int tileNumber = 1;
 
         for (int row = 0; row < 4; row++) {
@@ -100,7 +99,7 @@ public class GameBoard extends JFrame {
     }
 
 
-    public void isTileEmptySetRed() {
+    protected void isTileEmptySetRed() {
         for (int row = 0; row < 4; row++) {
             for (int col = 0; col < 4; col++) {
 
@@ -114,14 +113,14 @@ public class GameBoard extends JFrame {
         }
     }
 
-    public void showWinnerMessage(){
+    protected void showWinnerMessage(){
         JLabel messageLabel = new JLabel(message);
         messageLabel.setFont(new Font("Courier New", Font.BOLD, 20));
         JOptionPane.showMessageDialog(null, messageLabel);
     }
 
 
-    public void setUpJFrameSettings(){
+    private void setUpJFrameSettings(){
         setVisible(true);
         setLocationRelativeTo(null);
         setSize(400, 400);

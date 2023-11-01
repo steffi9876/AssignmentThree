@@ -6,7 +6,6 @@ public class OurActionListener implements ActionListener {
 
     private JButton[][] tile;
     private GameLogic gameLogic;
-
     private GameBoard gameBoard;
 
 
