@@ -16,7 +16,6 @@ public class GameBoard extends JFrame {
     JButton newGame = new JButton("New game");
     JButton easyMode = new JButton("Easy mode");
 
-
     public void game() {
 
         setLayout();
@@ -31,7 +30,7 @@ public class GameBoard extends JFrame {
         gameLogic.startNewGame();
 
         newGame.addActionListener(e -> gameLogic.startNewGame());
-        easyMode.addActionListener(e -> gameLogic.EasyMode());
+        easyMode.addActionListener(e -> gameLogic.easyMode());
     }
 
     public void setLayout(){
@@ -49,14 +48,11 @@ public class GameBoard extends JFrame {
         choicePanel.add(newGame);
         choicePanel.add(easyMode);
 
-
         newGame.setFont(new Font("Courier New", Font.BOLD, 20));
         easyMode.setFont(new Font("Courier New", Font.BOLD, 20));
 
         newGame.setForeground(new Color(10, 60, 150));
         easyMode.setForeground(new Color(10, 60, 150));
-
-
 
         setUpBoard();
 
@@ -70,7 +66,6 @@ public class GameBoard extends JFrame {
 
         gameLogic.setTiles(tiles);
         gamePanel.revalidate();
-
 
         setVisible(true);
         setLocationRelativeTo(null);
@@ -96,7 +91,6 @@ public class GameBoard extends JFrame {
             }
         }
     }
-
 
 
     public static void main(String[] args) {
