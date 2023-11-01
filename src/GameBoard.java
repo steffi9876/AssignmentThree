@@ -10,8 +10,7 @@ public class GameBoard extends JFrame {
     Color darkRed = new  Color(200, 40, 40);
     Color inkBlue = new Color(10, 60, 150);
 
-    Border outerBorder = BorderFactory.createLineBorder(darkRed, 10);
-    Border tileBorder = BorderFactory.createLineBorder(darkRed, 5);
+    Border border = BorderFactory.createLineBorder(darkRed, 5);
     JPanel foundation = new JPanel();
     JPanel gamePanel = new JPanel();
     JPanel choicePanel = new JPanel();
@@ -48,7 +47,7 @@ public class GameBoard extends JFrame {
         foundation.add(choicePanel, BorderLayout.NORTH);
         foundation.add(gamePanel, BorderLayout.CENTER);
 
-        gamePanel.setBorder(outerBorder);
+        gamePanel.setBorder(border);
         gamePanel.setBackground(darkRed);
         gamePanel.setLayout(new GridLayout(4, 4));
     }
@@ -72,7 +71,7 @@ public class GameBoard extends JFrame {
             for (int column = 0; column < 4; column++) {
                 tiles[row][column].setFont(new Font("Courier New", Font.BOLD, 20));
                 tiles[row][column].setForeground(new Color(10, 60, 150));
-                tiles[row][column].setBorder(tileBorder);
+                tiles[row][column].setBorder(border);
             }
         }
 
