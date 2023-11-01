@@ -39,8 +39,5 @@ public class OurActionListener implements ActionListener {
         if (gameLogic.isGameSolved()){
             JOptionPane.showMessageDialog(null, "Grattis, du vann!");
         }
-
     }
-
-
 }

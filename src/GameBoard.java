@@ -19,7 +19,10 @@ public class GameBoard extends JFrame {
 
     public void game() {
 
-        setLayout();
+        setUpPanels();
+        setUpTiles();
+        setUpBoard();
+        setUpJFrameSettings();
 
         OurActionListener listener = new OurActionListener(tiles, gameLogic);//anpassat loopen till en 2-dim.  array
         for (int row = 0; row < 4; row++) {
@@ -34,19 +37,19 @@ public class GameBoard extends JFrame {
     }
 
 
-    public void setLayout(){
-
+    public void setUpPanels(){
         add(foundation);
         foundation.setLayout(new BorderLayout());
-
         foundation.add(choicePanel, BorderLayout.NORTH);
         foundation.add(gamePanel, BorderLayout.CENTER);
 
         gamePanel.setBorder(outerBorder);
         gamePanel.setBackground(Color.RED);
-
         gamePanel.setLayout(new GridLayout(4, 4));
+    }
 
+
+    public void setUpTiles(){
         choicePanel.add(newGame);
         choicePanel.add(easyMode);
 
@@ -55,9 +58,11 @@ public class GameBoard extends JFrame {
 
         newGame.setForeground(new Color(10, 60, 150));
         easyMode.setForeground(new Color(10, 60, 150));
+    }
 
-        setUpBoard();
 
+    public void setUpBoard(){
+        setUpBoardTiles();
         for (int row = 0; row < 4; row++) {
             for (int column = 0; column < 4; column++) {
                 tiles[row][column].setFont(new Font("Courier New", Font.BOLD, 20));
@@ -68,33 +73,34 @@ public class GameBoard extends JFrame {
 
         gameLogic.setTiles(tiles);
         gamePanel.revalidate();
-
-        setVisible(true);
-        setLocationRelativeTo(null);
-        setSize(400, 400);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-
     }
 
 
-    public void setUpBoard(){
+    public void setUpBoardTiles() {
         int tileNumber = 1;
 
         for (int row = 0; row < 4; row++) {
             for (int column = 0; column < 4; column++) {
 
-                if(row == gameLogic.getEmptySlotRow() && column == gameLogic.getEmptySlotColumn()){
+                if (row == gameLogic.getEmptySlotRow() && column == gameLogic.getEmptySlotColumn()) {
                     tiles[row][column] = new JButton("");
                     tiles[row][column].setBackground(Color.RED);
                     gamePanel.add(tiles[row][column]);
-                }
-                else {
+                } else {
                     tiles[row][column] = new JButton((String.valueOf(tileNumber)));
                     gamePanel.add(tiles[row][column]);
-                    tileNumber ++;
+                    tileNumber++;
                 }
             }
         }
+    }
+
+
+    public void setUpJFrameSettings(){
+        setVisible(true);
+        setLocationRelativeTo(null);
+        setSize(400, 400);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
 
