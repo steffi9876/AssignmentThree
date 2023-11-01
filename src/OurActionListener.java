@@ -33,6 +33,7 @@ public class OurActionListener implements ActionListener {
         }
         if (gameLogic.isTileMoveable(clickedRow, clickedColumn)){
             gameLogic.swapTileWithEmptySlot(clickedRow,clickedColumn);
+            gameLogic.isTileEmptySetRed();
         }
         if (gameLogic.isGameSolved()){
             JOptionPane.showMessageDialog(null, "Grattis, du vann!");

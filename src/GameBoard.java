@@ -30,7 +30,10 @@ public class GameBoard extends JFrame {
         gameLogic.startNewGame();
 
         newGame.addActionListener(e -> gameLogic.startNewGame());
+
         easyMode.addActionListener(e -> gameLogic.easyMode());
+
+
     }
 
     public void setLayout(){
@@ -76,15 +79,17 @@ public class GameBoard extends JFrame {
 
     public void setUpBoard(){
         int tileNumber = 1;
-       // Border redBorder = BorderFactory.createLineBorder(Color.RED, 2);
+
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
+
                 if(i == gameLogic.getEmptySlotRow() && j == gameLogic.getEmptySlotColumn()){
                     tiles[i][j] = new JButton("");
+                    tiles[i][j].setBackground(Color.RED);
                     gamePanel.add(tiles[i][j]);
                 }
                 else {
-                    tiles[i][j] = new JButton(String.valueOf(String.valueOf(tileNumber)));
+                    tiles[i][j] = new JButton((String.valueOf(tileNumber)));
                     gamePanel.add(tiles[i][j]);
                     tileNumber ++;
                 }

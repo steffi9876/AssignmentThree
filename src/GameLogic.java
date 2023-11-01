@@ -1,10 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class GameLogic {
 
@@ -40,6 +35,7 @@ public class GameLogic {
         }
     }
 
+
     public void swapTileWithEmptySlot(int clickedRow, int clickedColumn) {
 
         if (isTileMoveable(clickedRow, clickedColumn)) {
@@ -70,6 +66,7 @@ public class GameLogic {
     }
 
     public void startNewGame() { // En metod för att kunna trycka på nytt spel
+
         int[] numbers = generateRandomNumbers();
         int index = 0;
         for (int row = 0; row < 4; row++) {
@@ -82,6 +79,7 @@ public class GameLogic {
                     emptySlotRow = row;
                     emptySlotColumn = column;
                 }
+                isTileEmptySetRed();
             }
         }
     }
@@ -103,6 +101,7 @@ public class GameLogic {
     }
 
     public void easyMode() {
+
         int tileValue = 1;
         for (int row = 0; row < 4; row++) {
             for (int column = 0; column < 4; column++) {
@@ -113,12 +112,29 @@ public class GameLogic {
                 } else if (row == 3 && column == 3) {
                     tiles[row][column].setText("15");
                 } else {
+                    tiles[row][column].setBackground(UIManager.getColor("Button.background"));
                     tiles[row][column].setText(String.valueOf(tileValue));
                     tileValue++;
                 }
+                isTileEmptySetRed();
             }
         }
     }
+
+    public void isTileEmptySetRed() {
+        for (int row = 0; row < 4; row++) {
+            for (int col = 0; col < 4; col++) {
+                if (tiles[row][col].getText().equals("")) {
+                    tiles[row][col].setBackground(Color.RED);
+                }
+                else{
+                    tiles[row][col].setBackground(UIManager.getColor("Button.background"));
+                }
+            }
+        }
+
+    }
+
 
 
 }
