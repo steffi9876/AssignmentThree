@@ -1,11 +1,14 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 
 public class GameBoard extends JFrame {
 
-
     GameLogic gameLogic = new GameLogic();
+
+    Border outerBorder = BorderFactory.createLineBorder(Color.RED, 10);
+    Border tileBorder = BorderFactory.createLineBorder(Color.RED, 5);
     JPanel foundation = new JPanel();
     JPanel gamePanel = new JPanel();
     JPanel choicePanel = new JPanel();
@@ -35,12 +38,33 @@ public class GameBoard extends JFrame {
         foundation.add(choicePanel, BorderLayout.NORTH);
         foundation.add(gamePanel, BorderLayout.CENTER);
 
+        gamePanel.setBorder(outerBorder);
+        gamePanel.setBackground(Color.RED);
+
         gamePanel.setLayout(new GridLayout(4, 4));
 
         choicePanel.add(newGame);
         choicePanel.add(easyMode);
 
+
+        newGame.setFont(new Font("Courier New", Font.BOLD, 20));
+        easyMode.setFont(new Font("Courier New", Font.BOLD, 20));
+
+        newGame.setForeground(new Color(10, 60, 150));
+        easyMode.setForeground(new Color(10, 60, 150));
+
+
+
         setUpBoard();
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                tiles[i][j].setFont(new Font("Courier New", Font.BOLD, 20));
+                tiles[i][j].setForeground(new Color(10, 60, 150));
+                tiles[i][j].setBorder(tileBorder);
+            }
+        }
+
         gameLogic.setTiles(tiles);
         gamePanel.revalidate();
 
@@ -54,6 +78,7 @@ public class GameBoard extends JFrame {
 
     public void setUpBoard(){
         int tileNumber = 1;
+       // Border redBorder = BorderFactory.createLineBorder(Color.RED, 2);
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 if(i == gameLogic.getEmptySlotRow() && j == gameLogic.getEmptySlotColumn()){
