@@ -7,14 +7,19 @@ public class GameBoard extends JFrame {
 
     GameLogic gameLogic = new GameLogic(this);
 
-    Border outerBorder = BorderFactory.createLineBorder(Color.RED, 10);
-    Border tileBorder = BorderFactory.createLineBorder(Color.RED, 5);
+    Color darkRed = new  Color(200, 40, 40);
+    Color inkBlue = new Color(10, 60, 150);
+
+    Border outerBorder = BorderFactory.createLineBorder(darkRed, 10);
+    Border tileBorder = BorderFactory.createLineBorder(darkRed, 5);
     JPanel foundation = new JPanel();
     JPanel gamePanel = new JPanel();
     JPanel choicePanel = new JPanel();
     JButton[][] tiles = new JButton[4][4];
     JButton newGame = new JButton("New game");
     JButton easyMode = new JButton("Easy mode");
+
+
 
 
     public void game() {
@@ -44,7 +49,7 @@ public class GameBoard extends JFrame {
         foundation.add(gamePanel, BorderLayout.CENTER);
 
         gamePanel.setBorder(outerBorder);
-        gamePanel.setBackground(Color.RED);
+        gamePanel.setBackground(darkRed);
         gamePanel.setLayout(new GridLayout(4, 4));
     }
 
@@ -56,8 +61,8 @@ public class GameBoard extends JFrame {
         newGame.setFont(new Font("Courier New", Font.BOLD, 20));
         easyMode.setFont(new Font("Courier New", Font.BOLD, 20));
 
-        newGame.setForeground(new Color(10, 60, 150));
-        easyMode.setForeground(new Color(10, 60, 150));
+        newGame.setForeground(inkBlue);
+        easyMode.setForeground(inkBlue);
     }
 
 
@@ -84,7 +89,7 @@ public class GameBoard extends JFrame {
 
                 if (row == gameLogic.getEmptySlotRow() && column == gameLogic.getEmptySlotColumn()) {
                     tiles[row][column] = new JButton("");
-                    tiles[row][column].setBackground(Color.RED);
+                    tiles[row][column].setBackground(darkRed);
                     gamePanel.add(tiles[row][column]);
                 } else {
                     tiles[row][column] = new JButton((String.valueOf(tileNumber)));
@@ -101,7 +106,7 @@ public class GameBoard extends JFrame {
             for (int col = 0; col < 4; col++) {
 
                 if (tiles[row][col].getText().equals("")) {
-                    tiles[row][col].setBackground(Color.RED);
+                    tiles[row][col].setBackground(darkRed);
                 }
                 else{
                     tiles[row][col].setBackground(UIManager.getColor("Button.background"));
