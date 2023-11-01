@@ -21,7 +21,6 @@ public class GameLogic {
     }
 
     public boolean isTileMoveable(int row, int column) {
-
         int rowDifference = Math.abs(emptySlotRow -row);
         int columnDifference = Math.abs(emptySlotColumn - column);
         return (rowDifference == 1 && columnDifference == 0 || rowDifference == 0 && columnDifference == 1);
@@ -29,7 +28,6 @@ public class GameLogic {
 
 
     public void swapTileWithEmptySlot(int clickedRow, int clickedColumn) {
-
         if (isTileMoveable(clickedRow, clickedColumn)) {
 
             String clicked = tiles[clickedRow][clickedColumn].getText();
@@ -54,15 +52,16 @@ public class GameLogic {
             numbers[j] = temp;
         }
         return numbers;
-
     }
 
-    public void startNewGame() { // En metod för att kunna trycka på nytt spel
 
+    public void startNewGame() { // En metod för att kunna trycka på nytt spel
         int[] numbers = generateRandomNumbers();
         int index = 0;
+
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
+
                 if (index < 15) {
                     tiles[i][j].setText(String.valueOf(numbers[index]));
                     index++;
@@ -76,10 +75,12 @@ public class GameLogic {
         }
     }
 
+
     public boolean isGameSolved() { // Metod för att se om spelet är löst
         int expectedValue = 1;
         for (int row = 0; row < 4; row++) {
             for (int col = 0; col < 4; col++) {
+
                 if (!tiles[row][col].getText().equals("")) {
                     int tileValue = Integer.parseInt(tiles[row][col].getText());
                     if (tileValue != expectedValue) {
@@ -92,8 +93,8 @@ public class GameLogic {
         return true;
     }
 
-    public void easyMode() {
 
+    public void easyMode() {
         int tileValue = 1;
         for (int row = 0; row < 4; row++) {
             for (int column = 0; column < 4; column++) {
@@ -116,8 +117,8 @@ public class GameLogic {
         }
     }
 
-    public void isTileEmptySetRed() {
 
+    public void isTileEmptySetRed() {
         for (int row = 0; row < 4; row++) {
             for (int col = 0; col < 4; col++) {
 
@@ -129,11 +130,7 @@ public class GameLogic {
                 }
             }
         }
-
     }
-
-
-
 }
 
 
