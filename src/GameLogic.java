@@ -97,18 +97,28 @@ public class GameLogic {
                     }
                     expectedValue++;
                 }
-
             }
         }
         return true;
     }
 
-    public void EasyMode() {
-        tiles[3][2].setText("");
-        tiles[3][3].setText("15");
-        setTiles(tiles);
+    public void easyMode() {
+        int tileValue = 1;
+        for (int row = 0; row < 4; row++) {
+            for (int column = 0; column < 4; column++) {
+                if (row == 3 && column == 2) {
+                    tiles[row][column].setText("");
+                    emptySlotRow = row;
+                    emptySlotColumn = column;
+                } else if (row == 3 && column == 3) {
+                    tiles[row][column].setText("15");
+                } else {
+                    tiles[row][column].setText(String.valueOf(tileValue));
+                    tileValue++;
+                }
+            }
+        }
     }
-
 
 
 }
