@@ -29,6 +29,9 @@ public class GameBoard extends JFrame {
         }
 
         gameLogic.startNewGame();
+
+        newGame.addActionListener(e -> gameLogic.startNewGame());
+        easyMode.addActionListener(e -> gameLogic.EasyMode());
     }
 
     public void setLayout(){
