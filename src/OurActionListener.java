@@ -7,10 +7,13 @@ public class OurActionListener implements ActionListener {
     private JButton[][] tile;
     private GameLogic gameLogic;
 
+    private GameBoard gameBoard;
 
-    public OurActionListener(JButton[][] tile, GameLogic gameLogic) {
+
+    public OurActionListener(JButton[][] tile, GameLogic gameLogic, GameBoard gameBoard) {
         this.tile = tile;
         this.gameLogic = gameLogic;
+        this.gameBoard = gameBoard;
     }
 
     @Override
@@ -34,7 +37,7 @@ public class OurActionListener implements ActionListener {
         }
         if (gameLogic.isTileMoveable(clickedRow, clickedColumn)){
             gameLogic.swapTileWithEmptySlot(clickedRow,clickedColumn);
-            gameLogic.isTileEmptySetRed();
+            gameBoard.isTileEmptySetRed();
         }
         if (gameLogic.isGameSolved()){
             JOptionPane.showMessageDialog(null, "Grattis, du vann!");
