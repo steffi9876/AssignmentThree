@@ -3,10 +3,14 @@ import java.awt.*;
 
 public class GameLogic {
 
+    GameBoard gameBoard;
     private int emptySlotRow = 3;
     private int emptySlotColumn = 3;
     private JButton[][] tiles; // En referens till vår tiles array, används i metoden swapTileWithEmptySlot
 
+    public GameLogic(GameBoard gameBoard) {
+        this.gameBoard = gameBoard;
+    }
 
     public int getEmptySlotRow() {
         return emptySlotRow;
@@ -70,7 +74,7 @@ public class GameLogic {
                     emptySlotRow = i;
                     emptySlotColumn = j;
                 }
-                isTileEmptySetRed();
+                gameBoard.isTileEmptySetRed();
             }
         }
     }
@@ -112,25 +116,13 @@ public class GameLogic {
                     tiles[row][column].setText(String.valueOf(tileValue));
                     tileValue++;
                 }
-                isTileEmptySetRed();
+                gameBoard.isTileEmptySetRed();
             }
         }
     }
 
 
-    public void isTileEmptySetRed() {
-        for (int row = 0; row < 4; row++) {
-            for (int col = 0; col < 4; col++) {
 
-                if (tiles[row][col].getText().equals("")) {
-                    tiles[row][col].setBackground(Color.RED);
-                }
-                else{
-                    tiles[row][col].setBackground(UIManager.getColor("Button.background"));
-                }
-            }
-        }
-    }
 }
 
 

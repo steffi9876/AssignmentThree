@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class GameBoard extends JFrame {
 
-    GameLogic gameLogic = new GameLogic();
+    GameLogic gameLogic = new GameLogic(this);
 
     Border outerBorder = BorderFactory.createLineBorder(Color.RED, 10);
     Border tileBorder = BorderFactory.createLineBorder(Color.RED, 5);
@@ -24,7 +24,7 @@ public class GameBoard extends JFrame {
         setUpBoard();
         setUpJFrameSettings();
 
-        OurActionListener listener = new OurActionListener(tiles, gameLogic);//anpassat loopen till en 2-dim.  array
+        OurActionListener listener = new OurActionListener(tiles, gameLogic, this);//anpassat loopen till en 2-dim.  array
         for (int row = 0; row < 4; row++) {
             for (int column = 0; column < 4; column++) {
                 tiles[row][column].addActionListener(listener);
@@ -90,6 +90,21 @@ public class GameBoard extends JFrame {
                     tiles[row][column] = new JButton((String.valueOf(tileNumber)));
                     gamePanel.add(tiles[row][column]);
                     tileNumber++;
+                }
+            }
+        }
+    }
+
+
+    public void isTileEmptySetRed() {
+        for (int row = 0; row < 4; row++) {
+            for (int col = 0; col < 4; col++) {
+
+                if (tiles[row][col].getText().equals("")) {
+                    tiles[row][col].setBackground(Color.RED);
+                }
+                else{
+                    tiles[row][col].setBackground(UIManager.getColor("Button.background"));
                 }
             }
         }
