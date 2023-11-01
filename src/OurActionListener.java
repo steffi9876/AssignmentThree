@@ -14,7 +14,7 @@ public class OurActionListener implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) { //ändrat nedan
+    public void actionPerformed(ActionEvent e) {
         JButton tile = (JButton) e.getSource();//Typomvandlar genom casting för att slippa en e.getSource för 15 knappar
         if(tile.getText().equals("")){ //om den tryckta knappen innehåller en tom sträng "" så gör inget
             return;
@@ -22,11 +22,12 @@ public class OurActionListener implements ActionListener {
         int clickedRow = -1;
         int clickedColumn = -1;
 
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                if (this.tile[i][j] == tile){
-                    clickedRow = i;
-                    clickedColumn = j;
+        for (int row = 0; row < 4; row++) {
+            for (int column = 0; column < 4; column++) {
+
+                if (this.tile[row][column] == tile){
+                    clickedRow = row;
+                    clickedColumn = column;
                     break;
                 }
             }

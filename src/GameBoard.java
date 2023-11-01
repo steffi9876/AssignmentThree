@@ -16,27 +16,26 @@ public class GameBoard extends JFrame {
     JButton newGame = new JButton("New game");
     JButton easyMode = new JButton("Easy mode");
 
+
     public void game() {
 
         setLayout();
 
         OurActionListener listener = new OurActionListener(tiles, gameLogic);//anpassat loopen till en 2-dim.  array
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                tiles[i][j].addActionListener(listener);
+        for (int row = 0; row < 4; row++) {
+            for (int column = 0; column < 4; column++) {
+                tiles[row][column].addActionListener(listener);
             }
         }
 
         gameLogic.startNewGame();
-
         newGame.addActionListener(e -> gameLogic.startNewGame());
-
         easyMode.addActionListener(e -> gameLogic.easyMode());
-
-
     }
 
+
     public void setLayout(){
+
         add(foundation);
         foundation.setLayout(new BorderLayout());
 
@@ -59,11 +58,11 @@ public class GameBoard extends JFrame {
 
         setUpBoard();
 
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                tiles[i][j].setFont(new Font("Courier New", Font.BOLD, 20));
-                tiles[i][j].setForeground(new Color(10, 60, 150));
-                tiles[i][j].setBorder(tileBorder);
+        for (int row = 0; row < 4; row++) {
+            for (int column = 0; column < 4; column++) {
+                tiles[row][column].setFont(new Font("Courier New", Font.BOLD, 20));
+                tiles[row][column].setForeground(new Color(10, 60, 150));
+                tiles[row][column].setBorder(tileBorder);
             }
         }
 
@@ -77,20 +76,21 @@ public class GameBoard extends JFrame {
 
     }
 
+
     public void setUpBoard(){
         int tileNumber = 1;
 
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int row = 0; row < 4; row++) {
+            for (int column = 0; column < 4; column++) {
 
-                if(i == gameLogic.getEmptySlotRow() && j == gameLogic.getEmptySlotColumn()){
-                    tiles[i][j] = new JButton("");
-                    tiles[i][j].setBackground(Color.RED);
-                    gamePanel.add(tiles[i][j]);
+                if(row == gameLogic.getEmptySlotRow() && column == gameLogic.getEmptySlotColumn()){
+                    tiles[row][column] = new JButton("");
+                    tiles[row][column].setBackground(Color.RED);
+                    gamePanel.add(tiles[row][column]);
                 }
                 else {
-                    tiles[i][j] = new JButton((String.valueOf(tileNumber)));
-                    gamePanel.add(tiles[i][j]);
+                    tiles[row][column] = new JButton((String.valueOf(tileNumber)));
+                    gamePanel.add(tiles[row][column]);
                     tileNumber ++;
                 }
             }
@@ -102,6 +102,4 @@ public class GameBoard extends JFrame {
         GameBoard g = new GameBoard();
         g.game();
     }
-
-
 }
