@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.util.Random;
 
 public class GameLogic {
@@ -7,7 +6,7 @@ public class GameLogic {
     private GameBoard gameBoard;
     private int emptySlotRow = 3;
     private int emptySlotColumn = 3;
-    private JButton[][] tiles; // En referens till vår tiles array, används i metoden swapTileWithEmptySlot
+    private JButton[][] tiles;
 
     protected GameLogic(GameBoard gameBoard) {
         this.gameBoard = gameBoard;
@@ -45,7 +44,7 @@ public class GameLogic {
     }
 
 
-    private int[] generateRandomNumbers() { // En metod som genererar random nummer till oss när ett nytt spel startar
+    private int[] generateRandomNumbers() {
 
         int[] numbers = new int[15];
 
@@ -65,8 +64,7 @@ public class GameLogic {
     }
 
 
-
-    protected void startNewGame() { // En metod för att kunna trycka på nytt spel
+    protected void startNewGame() {
         int[] numbers = generateRandomNumbers();
         int index = 0;
 
@@ -87,7 +85,7 @@ public class GameLogic {
     }
 
 
-    protected boolean isGameSolved() { // Metod för att se om spelet är löst
+    protected boolean isGameSolved() {
         int expectedValue = 1;
         for (int row = 0; row < 4; row++) {
             for (int column = 0; column < 4; column++) {

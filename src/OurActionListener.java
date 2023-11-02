@@ -17,8 +17,8 @@ public class OurActionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JButton tile = (JButton) e.getSource();//Typomvandlar genom casting för att slippa en e.getSource för 15 knappar
-        if(tile.getText().equals("")){ //om den tryckta knappen innehåller en tom sträng "" så gör inget
+        JButton tile = (JButton) e.getSource();
+        if(tile.getText().equals("")){
             return;
         }
         int clickedRow = -1;
