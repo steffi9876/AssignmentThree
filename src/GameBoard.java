@@ -69,7 +69,7 @@ public class GameBoard extends JFrame {
         for (int row = 0; row < 4; row++) {
             for (int column = 0; column < 4; column++) {
                 tiles[row][column].setFont(new Font("Courier New", Font.BOLD, 20));
-                tiles[row][column].setForeground(new Color(10, 60, 150));
+                tiles[row][column].setForeground(inkBlue);
                 tiles[row][column].setBorder(border);
             }
         }
@@ -116,6 +116,7 @@ public class GameBoard extends JFrame {
     protected void showWinnerMessage(){
         JLabel messageLabel = new JLabel(message);
         messageLabel.setFont(new Font("Courier New", Font.BOLD, 20));
+        messageLabel.setForeground(inkBlue);
         JOptionPane.showMessageDialog(null, messageLabel);
     }
 
