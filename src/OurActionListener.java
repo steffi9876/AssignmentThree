@@ -6,7 +6,6 @@ public class OurActionListener implements ActionListener {
 
     private JButton[][] tile;
     private GameLogic gameLogic;
-
     private GameBoard gameBoard;
 
 
@@ -18,8 +17,8 @@ public class OurActionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JButton tile = (JButton) e.getSource();//Typomvandlar genom casting för att slippa en e.getSource för 15 knappar
-        if(tile.getText().equals("")){ //om den tryckta knappen innehåller en tom sträng "" så gör inget
+        JButton tile = (JButton) e.getSource();
+        if(tile.getText().equals("")){
             return;
         }
         int clickedRow = -1;
@@ -40,7 +39,7 @@ public class OurActionListener implements ActionListener {
             gameBoard.isTileEmptySetRed();
         }
         if (gameLogic.isGameSolved()){
-            JOptionPane.showMessageDialog(null, "Grattis, du vann!");
+            gameBoard.showWinnerMessage();
         }
     }
 }

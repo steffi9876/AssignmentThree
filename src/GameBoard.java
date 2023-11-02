@@ -5,19 +5,22 @@ import java.awt.*;
 
 public class GameBoard extends JFrame {
 
-    GameLogic gameLogic = new GameLogic(this);
+    private GameLogic gameLogic = new GameLogic(this);
+    private JPanel foundation = new JPanel();
+    private JPanel gamePanel = new JPanel();
+    private JPanel choicePanel = new JPanel();
+    private JButton[][] tiles = new JButton[4][4];
 
-    Border outerBorder = BorderFactory.createLineBorder(Color.RED, 10);
-    Border tileBorder = BorderFactory.createLineBorder(Color.RED, 5);
-    JPanel foundation = new JPanel();
-    JPanel gamePanel = new JPanel();
-    JPanel choicePanel = new JPanel();
-    JButton[][] tiles = new JButton[4][4];
-    JButton newGame = new JButton("New game");
-    JButton easyMode = new JButton("Easy mode");
+    private JButton newGame = new JButton("New game");
+    private JButton easyMode = new JButton("Easy mode");
+
+    private Color darkRed = new  Color(200, 40, 40);
+    private Color inkBlue = new Color(10, 60, 150);
+    private Border border = BorderFactory.createLineBorder(darkRed, 5);
+    private String message = "Grattis, du vann!";
 
 
-    public void game() {
+    private void game() {
 
         setUpPanels();
         setUpTiles();
@@ -37,37 +40,37 @@ public class GameBoard extends JFrame {
     }
 
 
-    public void setUpPanels(){
+    private void setUpPanels(){
         add(foundation);
         foundation.setLayout(new BorderLayout());
         foundation.add(choicePanel, BorderLayout.NORTH);
         foundation.add(gamePanel, BorderLayout.CENTER);
 
-        gamePanel.setBorder(outerBorder);
-        gamePanel.setBackground(Color.RED);
+        gamePanel.setBorder(border);
+        gamePanel.setBackground(darkRed);
         gamePanel.setLayout(new GridLayout(4, 4));
     }
 
 
-    public void setUpTiles(){
+    private void setUpTiles(){
         choicePanel.add(newGame);
         choicePanel.add(easyMode);
 
         newGame.setFont(new Font("Courier New", Font.BOLD, 20));
         easyMode.setFont(new Font("Courier New", Font.BOLD, 20));
 
-        newGame.setForeground(new Color(10, 60, 150));
-        easyMode.setForeground(new Color(10, 60, 150));
+        newGame.setForeground(inkBlue);
+        easyMode.setForeground(inkBlue);
     }
 
 
-    public void setUpBoard(){
+    private void setUpBoard(){
         setUpBoardTiles();
         for (int row = 0; row < 4; row++) {
             for (int column = 0; column < 4; column++) {
                 tiles[row][column].setFont(new Font("Courier New", Font.BOLD, 20));
-                tiles[row][column].setForeground(new Color(10, 60, 150));
-                tiles[row][column].setBorder(tileBorder);
+                tiles[row][column].setForeground(inkBlue);
+                tiles[row][column].setBorder(border);
             }
         }
 
@@ -76,7 +79,7 @@ public class GameBoard extends JFrame {
     }
 
 
-    public void setUpBoardTiles() {
+    private void setUpBoardTiles() {
         int tileNumber = 1;
 
         for (int row = 0; row < 4; row++) {
@@ -84,7 +87,7 @@ public class GameBoard extends JFrame {
 
                 if (row == gameLogic.getEmptySlotRow() && column == gameLogic.getEmptySlotColumn()) {
                     tiles[row][column] = new JButton("");
-                    tiles[row][column].setBackground(Color.RED);
+                    tiles[row][column].setBackground(darkRed);
                     gamePanel.add(tiles[row][column]);
                 } else {
                     tiles[row][column] = new JButton((String.valueOf(tileNumber)));
@@ -96,12 +99,12 @@ public class GameBoard extends JFrame {
     }
 
 
-    public void isTileEmptySetRed() {
+    protected void isTileEmptySetRed() {
         for (int row = 0; row < 4; row++) {
             for (int col = 0; col < 4; col++) {
 
                 if (tiles[row][col].getText().equals("")) {
-                    tiles[row][col].setBackground(Color.RED);
+                    tiles[row][col].setBackground(darkRed);
                 }
                 else{
                     tiles[row][col].setBackground(UIManager.getColor("Button.background"));
@@ -110,8 +113,15 @@ public class GameBoard extends JFrame {
         }
     }
 
+    protected void showWinnerMessage(){
+        JLabel messageLabel = new JLabel(message);
+        messageLabel.setFont(new Font("Courier New", Font.BOLD, 20));
+        messageLabel.setForeground(inkBlue);
+        JOptionPane.showMessageDialog(null, messageLabel);
+    }
 
-    public void setUpJFrameSettings(){
+
+    private void setUpJFrameSettings(){
         setVisible(true);
         setLocationRelativeTo(null);
         setSize(400, 400);
